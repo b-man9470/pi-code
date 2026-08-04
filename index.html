@@ -1,0 +1,962 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — [Mr. Web]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --navy: #0f172a;
+        --navy-mid: #1e293b;
+        --accent: #2563eb;
+        --accent-light: #3b82f6;
+        --text-1: #0f172a;
+        --text-2: #475569;
+        --text-3: #94a3b8;
+        --bg: #ffffff;
+        --bg-alt: #f8fafc;
+        --border: #e2e8f0;
+        --radius: 8px;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        color: var(--text-1);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--text-1);
+        text-decoration: none;
+      }
+      .nav-logo span {
+        color: var(--accent);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-2);
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      /* ── CONTAINER ── */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* ── BUTTONS ── */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        border-radius: var(--radius);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+      }
+      .btn-primary:hover {
+        background: #1d4ed8;
+      }
+      .btn-ghost {
+        background: transparent;
+        color: white;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+      }
+      .btn-ghost:hover {
+        border-color: rgba(255, 255, 255, 0.45);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .btn-outline-accent {
+        background: transparent;
+        color: var(--accent);
+        border: 1.5px solid var(--accent);
+      }
+      .btn-outline-accent:hover {
+        background: #eff6ff;
+      }
+
+      /* ── SECTION HEADER ── */
+      .sec-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 0.6rem;
+      }
+      .sec-title {
+        font-size: clamp(1.6rem, 3vw, 2.1rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text-1);
+        margin-bottom: 0.9rem;
+      }
+      .sec-desc {
+        color: var(--text-2);
+        max-width: 540px;
+        line-height: 1.75;
+        font-size: 0.95rem;
+      }
+
+      /* ── HERO ── */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: var(--navy);
+        color: white;
+        padding: 8rem 0 5rem;
+      }
+      .hero-chip {
+        display: inline-block;
+        background: rgba(37, 99, 235, 0.18);
+        color: #93c5fd;
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        border-radius: 100px;
+        padding: 5px 16px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+      #hero h1 {
+        font-size: clamp(2.4rem, 5vw, 3.8rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.025em;
+        margin-bottom: 1.25rem;
+      }
+      #hero h1 em {
+        font-style: normal;
+        color: var(--accent-light);
+      }
+      .hero-sub {
+        font-size: 1.05rem;
+        color: #94a3b8;
+        max-width: 500px;
+        line-height: 1.75;
+        margin-bottom: 2.5rem;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .hero-stats {
+        display: flex;
+        gap: 2.5rem;
+        margin-top: 4rem;
+        padding-top: 2.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .stat-num {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: white;
+      }
+      .stat-label {
+        font-size: 0.8rem;
+        color: #64748b;
+        margin-top: 2px;
+      }
+
+      /* ── ABOUT ── */
+      #about {
+        background: var(--bg-alt);
+        padding: 5rem 0;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 5fr 7fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .about-photo-brent {
+        background-image: url('brent.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 12px;
+        aspect-ratio: 4 / 5;
+      }
+
+      .about-photo-samuel {
+        background-image: url('Samuel.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 12px;
+        aspect-ratio: 4 / 5;
+      }
+
+      .about-photo span {
+        font-size: 2.5rem;
+      }
+      .about-text p {
+        color: var(--text-2);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+      }
+      .about-chips {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+      .chip {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        padding: 5px 14px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-2);
+      }
+
+      /* ── SKILLS ── */
+      #skills {
+        padding: 5rem 0;
+      }
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+        margin-top: 3rem;
+      }
+      .skill-card {
+        background: var(--bg-alt);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.25rem 1rem;
+        text-align: center;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .skill-card:hover {
+        border-color: var(--accent-light);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
+      }
+      .skill-icon {
+        font-size: 1.9rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+      .skill-name {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--text-1);
+      }
+      .skill-note {
+        font-size: 0.72rem;
+        color: var(--text-3);
+        margin-top: 3px;
+      }
+
+      /* ── SERVICES ── */
+      #services {
+        background: var(--bg-alt);
+        padding: 5rem 0;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+      .srv-card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.75rem;
+        position: relative;
+      }
+      .srv-card.featured {
+        border-color: var(--accent);
+        border-width: 2px;
+      }
+      .best-badge {
+        position: absolute;
+        top: -13px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--accent);
+        color: white;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 100px;
+        white-space: nowrap;
+      }
+      .srv-name {
+        font-weight: 700;
+        font-size: 1.05rem;
+        margin-bottom: 0.35rem;
+      }
+      .srv-tagline {
+        font-size: 0.8rem;
+        color: var(--text-3);
+        margin-bottom: 1rem;
+      }
+      .srv-price {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 0.25rem;
+      }
+      .srv-price-note {
+        font-size: 0.75rem;
+        color: var(--text-3);
+        margin-bottom: 1.5rem;
+      }
+      .srv-features {
+        list-style: none;
+        margin-bottom: 1.75rem;
+      }
+      .srv-features li {
+        font-size: 0.85rem;
+        color: var(--text-2);
+        padding: 7px 0;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .srv-features li:last-child {
+        border: none;
+      }
+      .srv-features li::before {
+        content: '✓';
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      /* ── PROJECTS ── */
+      #projects {
+        padding: 5rem 0;
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+      .proj-card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+      .proj-card:hover {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+        transform: translateY(-2px);
+      }
+      .proj-thumb {
+        background: var(--navy-mid);
+        height: 190px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        color: #475569;
+        font-size: 0.8rem;
+      }
+      .proj-thumb span {
+        font-size: 2.2rem;
+      }
+      .proj-body {
+        padding: 1.4rem;
+      }
+      .proj-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 0.75rem;
+      }
+      .tag {
+        background: #eff6ff;
+        color: #1d4ed8;
+        font-size: 0.68rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 100px;
+      }
+      .proj-title {
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+      }
+      .proj-desc {
+        font-size: 0.85rem;
+        color: var(--text-2);
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+      .proj-link {
+        color: var(--accent);
+        font-size: 0.82rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .proj-link:hover {
+        text-decoration: underline;
+      }
+      .proj-card.cta-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2.5rem;
+        border-style: dashed;
+        min-height: 300px;
+      }
+      .cta-icon {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+      }
+
+      /* ── CONTACT ── */
+      #contact {
+        background: var(--navy);
+        padding: 5rem 0;
+        color: white;
+      }
+      #contact .sec-label {
+        color: #93c5fd;
+      }
+      #contact .sec-title {
+        color: white;
+      }
+      #contact .sec-desc {
+        color: #94a3b8;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 4rem;
+        margin-top: 3rem;
+        align-items: start;
+      }
+      .contact-heading {
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 1.5rem;
+      }
+      .c-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 0.9rem;
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+      .c-icon {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+        background: rgba(255, 255, 255, 0.07);
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius);
+        color: white;
+        padding: 11px 14px;
+        font-family: inherit;
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+        transition: border-color 0.2s;
+        outline: none;
+      }
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: #475569;
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: var(--accent-light);
+      }
+      .contact-form textarea {
+        height: 130px;
+        resize: vertical;
+        margin-bottom: 1rem;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: #090f1d;
+        padding: 1.5rem 0;
+        text-align: center;
+        color: #334155;
+        font-size: 0.8rem;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-photo {
+          display: none;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .hero-stats {
+          gap: 1.75rem;
+        }
+      }
+      @media (max-width: 640px) {
+        .nav-links {
+          display: none;
+        }
+        .hero-cta {
+          flex-direction: column;
+        }
+        .hero-cta .btn {
+          text-align: center;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ─── NAV ─── -->
+    <nav aria-label="Hoofdnavigatie">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">Mr. Web</a>
+        <ul class="nav-links">
+          <li><a href="#about">Over ons</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#services">Diensten</a></li>
+          <li><a href="#projects">Projecten</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <section id="hero" aria-label="Introductie">
+      <div class="container">
+        <div class="hero-chip">Actief · Zomer 2026</div>
+        <h1>
+          Wij maken websites die<br /><em>werken</em> voor<br />jouw bedrijf.
+        </h1>
+        <p class="hero-sub">
+          Professionele websites voor kleine ondernemingen en zelfstandigen.
+          Betaalbaar, snel geleverd en precies wat je nodig hebt.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Stuur een bericht</a>
+          <a href="#projects" class="btn btn-ghost">Bekijk ons werk</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">€100</div>
+            <div class="stat-label">Vanaf</div>
+          </div>
+          <div>
+            <div class="stat-num">7–14</div>
+            <div class="stat-label">Dagen levertijd</div>
+          </div>
+          <div>
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Mobielvriendelijk</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── ABOUT ─── -->
+    <section id="about" aria-label="Over ons">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-photo-brent"></div>
+
+          <div class="about-text">
+            <div class="sec-label">Over ons</div>
+            <h2 class="sec-title">Ik ben Brent.</h2>
+            <p>
+              Ik ben een student Informatica aan de Universiteit Gent, momenteel
+              in mijn derde jaar. Met mijn ervaring in HTML, CSS, JavaScript en
+              React bouw ik moderne websites die niet alleen mooi ogen, maar ook
+              snel, gebruiksvriendelijk en betrouwbaar zijn. Ik heb eerder al in
+              mijn opleiding verschillende proffessionele websites ontwikkeld.
+            </p>
+            <p>
+              Tijdens de zomer van 2026 neem ik een beperkt aantal
+              freelanceprojecten aan voor kleine ondernemingen en zelfstandigen.
+              Zo doe ik praktijkervaring op en lever ik tegelijk betaalbare,
+              professionele websites.
+            </p>
+            <p>
+              Iedereen verdient een sterke online aanwezigheid — ook met een
+              klein budget. Laten we kijken wat ik voor jou kan doen.
+            </p>
+            <div class="about-chips">
+              <span class="chip">België</span>
+              <span class="chip">Student Ugent</span>
+              <span class="chip">Freelance zomer 2026</span>
+              <span class="chip">Programmeur</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>
+        .container {
+          margin-bottom: 4rem;
+        }
+      </style>
+
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-photo-samuel"></div>
+
+          <div class="about-text">
+            <div class="sec-label">Over ons</div>
+            <h2 class="sec-title">Ik ben Samuel.</h2>
+            <p>
+              Ik ben een student webdevelopment aan de Hogent. 
+              Met ervaring in front-end technologieën zoals React, TypeScript, JavaScript,
+              HTML en CSS bouw ik moderne en gebruiksvriendelijke websites. 
+              Daarnaast heb ik ook een stevige basis in back-end development (Java en Python). 
+              Om deze theorie in de praktijk om te zetten, 
+              heb ik recent nog een op maat gemaakte shopfloor applicatie ontwikkeld voor het IT-bedrijf Delaware met behulp van Java Spring Web.
+            </p>
+            <p>
+              Tijdens de zomer 2026 werken Brent en ik samen aan een beperkt
+              aantal freelanceprojecten voor kleine ondernemingen en
+              zelfstandigen. Op deze manier doen we ervaring op en kunnen we een
+              centje bijverdienen.
+            </p>
+            <p>
+              Tegenwoordig heeft iedereen een website nodig, ook kleine
+              bedrijven. Laten we kijken wat wij voor jou kunnen doen.
+            </p>
+            <div class="about-chips">
+              <span class="chip">België</span>
+              <span class="chip">Student Hogent</span>
+              <span class="chip">Freelance zomer 2026</span>
+              <span class="chip">Programmeur</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SKILLS ─── -->
+    <section id="skills" aria-label="Technische vaardigheden">
+      <div class="container">
+        <div class="sec-label">Technisch</div>
+        <h2 class="sec-title">Wat wij gebruiken</h2>
+        <p class="sec-desc">
+          We werken met moderne webtechnologieën en zorg voor code die schoon,
+          snel en onderhoudbaar is.
+        </p>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <span class="skill-icon">🌐</span>
+            <div class="skill-name">HTML</div>
+            <div class="skill-note">Structuur & semantiek</div>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">🎨</span>
+            <div class="skill-name">CSS</div>
+            <div class="skill-note">Styling & animaties</div>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">⚡</span>
+            <div class="skill-name">JavaScript</div>
+            <div class="skill-note">Interactiviteit</div>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">⚛️</span>
+            <div class="skill-name">React</div>
+            <div class="skill-note">Web applicaties</div>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">🔷</span>
+            <div class="skill-name">TypeScript</div>
+            <div class="skill-note">Type-safe code</div>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">🎯</span>
+            <div class="skill-name">Figma</div>
+            <div class="skill-note">Design & mockups</div>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">🐙</span>
+            <div class="skill-name">GitHub</div>
+            <div class="skill-note">Versiebeheer</div>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">📱</span>
+            <div class="skill-name">Responsive</div>
+            <div class="skill-note">Mobile-first</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SERVICES ─── -->
+    <section id="services" aria-label="Diensten en prijzen">
+      <div class="container">
+        <div class="sec-label">Diensten & Prijzen</div>
+        <h2 class="sec-title">Wat wij aanbieden</h2>
+        <p class="sec-desc">
+          Duidelijke pakketten, eerlijke prijzen. Geen verborgen kosten, geen
+          verrassingen.
+        </p>
+        <div class="services-grid">
+          <div class="srv-card">
+            <div class="srv-name">Starter</div>
+            <div class="srv-tagline">Eén pagina, direct indruk maken</div>
+            <div class="srv-price">€100 – €200</div>
+            <div class="srv-price-note">eenmalig</div>
+            <ul class="srv-features">
+              <li>1 pagina (landing page)</li>
+              <li>Contactformulier</li>
+              <li>Mobielvriendelijk</li>
+              <li>2 revisieronden</li>
+              <li>Oplevering binnen 7 dagen</li>
+            </ul>
+            <a
+              href="#contact"
+              class="btn btn-outline-accent"
+              style="width: 100%; justify-content: center"
+              >Neem contact op</a
+            >
+          </div>
+
+          <div class="srv-card featured">
+            <div class="best-badge">Meest gekozen</div>
+            <div class="srv-name">Basic</div>
+            <div class="srv-tagline">Complete website voor je zaak</div>
+            <div class="srv-price">€200 – €400</div>
+            <div class="srv-price-note">eenmalig</div>
+            <ul class="srv-features">
+              <li>2–4 pagina's</li>
+              <li>Contactformulier</li>
+              <li>Mobielvriendelijk</li>
+              <li>Basis SEO-optimalisatie</li>
+              <li>2 revisieronden</li>
+              <li>Oplevering binnen 14 dagen</li>
+            </ul>
+            <a
+              href="#contact"
+              class="btn btn-primary"
+              style="width: 100%; justify-content: center"
+              >Neem contact op</a
+            >
+          </div>
+
+          <div class="srv-card">
+            <div class="srv-name">Business</div>
+            <div class="srv-tagline">Voor wie meer wil</div>
+            <div class="srv-price">€400 – €700</div>
+            <div class="srv-price-note">
+              eenmalig · prijs op maat bespreekbaar
+            </div>
+            <ul class="srv-features">
+              <li>5+ pagina's</li>
+              <li>Animaties & interacties</li>
+              <li>CMS-integratie (optioneel)</li>
+              <li>Uitgebreide SEO</li>
+              <li>3 revisieronden</li>
+              <li>Nabespreking & overdracht</li>
+            </ul>
+            <a
+              href="#contact"
+              class="btn btn-outline-accent"
+              style="width: 100%; justify-content: center"
+              >Neem contact op</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PROJECTS ─── -->
+    <section id="projects" aria-label="Portfolio en projecten">
+      <div class="container">
+        <div class="sec-label">Portfolio</div>
+        <h2 class="sec-title">Onze werken</h2>
+        <p class="sec-desc">
+          Projecten verschijnen hier zodra ze zijn afgerond. Wil je mijn eerste
+          showcase-klant zijn?
+        </p>
+        <div class="projects-grid">
+          <div class="proj-card cta-card">
+            <div class="cta-icon">✨</div>
+            <div class="proj-title" style="margin-bottom: 0.5rem">
+              Jouw project hier?
+            </div>
+            <p class="proj-desc">
+              Geïnteresseerd om samen te werken? Stuur me een berichtje en laten
+              we het hebben over jouw website.
+            </p>
+            <a href="#contact" class="btn btn-primary" style="margin-top: 1rem"
+              >Stuur een bericht</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CONTACT ─── -->
+    <section id="contact" aria-label="Contactformulier">
+      <div class="container">
+        <div class="sec-label">Contact</div>
+        <h2 class="sec-title">Laten we samenwerken.</h2>
+        <p class="sec-desc">
+          Heb je een website nodig of heeft u een vraag? Wij reageren binnen 24
+          uur.
+        </p>
+        <div class="contact-grid">
+          <div>
+            <div class="contact-heading">Bereikbaar via</div>
+            <div class="c-item">
+              <div class="c-icon">📧</div>
+              <span>bedrijf@email.be</span>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">📍</div>
+              <span>België</span>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">💼</div>
+              <span>linkedin.com/in/jounaam</span>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">🐙</div>
+              <span>github.com/jouwusername</span>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Jouw naam" autocomplete="name" />
+              <input
+                type="email"
+                placeholder="E-mailadres"
+                autocomplete="email"
+              />
+            </div>
+            <input
+              type="text"
+              placeholder="Onderwerp (bv. Nieuwe website nodig)"
+            />
+            <textarea
+              placeholder="Vertel me over jouw project — wat heb je nodig en wanneer?"
+            ></textarea>
+            <button
+              class="btn btn-primary"
+              style="width: 100%; justify-content: center; padding: 14px 0"
+            >
+              Stuur bericht
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+      <div class="container">
+        &copy; 2026 [Brent De Petter] &mdash; Gemaakt met HTML en CSS
+      </div>
+    </footer>
+  </body>
+</html>
